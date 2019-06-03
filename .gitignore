@@ -59,3 +59,8 @@ dkms.conf
 */.idea/**
 .idea/**
 .idea
+
+# Visual Studio Code
+.vscode
+*/.vscode/**
+.vscode/**

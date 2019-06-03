@@ -1,14 +1,11 @@
 #include <lmic.h>
 #include <hal/hal.h>
 #include <SPI.h>
-#include <CayenneLPP.h>
 #include <Wire.h>
 #include <time.h>
-#include <TinyGPS++.h>
 #include <HardwareSerial.h>
 #include <EEPROM.h>
 #include <Arduino.h>
-#include <sstream>
 
 #include "esp_bt_device.h"
 
@@ -16,8 +13,6 @@
 #include <BLEUtils.h>
 #include <BLEScan.h>
 #include <BLEAdvertisedDevice.h>
-
-#include "data_buffer.h"
 
 //***************************************************************************************************
 // Constants                                                                                        *
@@ -80,13 +75,9 @@ const lmic_pinmap lmic_pins = {
   .dio = {26, 32, 33},
 };
 
-HardwareSerial SerialGPS(2);
-TinyGPSPlus gps;
-CayenneLPP lpp(51);
 bool OTAA = true;
 
 BLEScan *pBLEScan;
-static char ble_mac_address[13];
 
 String known_ble_names[] = { "RDL51822" };
 
